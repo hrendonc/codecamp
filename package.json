@@ -1,0 +1,10 @@
+{
+  "autor": "Hector Rendon",
+  "description": "Curso de FreeCodeCamp",
+  "licence": "MIT",
+  "version": "2021.11.01",
+  
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
