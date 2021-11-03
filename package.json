@@ -4,7 +4,8 @@
   "licence": "MIT",
   "version": "2021.11.01",
   "scripts": {
-    "start": "npm run app.js"
+    "start": "node app",
+    "dev": "nodemon app"
   },
   "dependencies": {
     "express": "^4.17.1",
