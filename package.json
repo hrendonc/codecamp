@@ -3,6 +3,9 @@
   "description": "Curso de FreeCodeCamp",
   "licence": "MIT",
   "version": "2021.11.01",
+  "scripts": {
+    "start": "npm run app.js"
+  }
   "dependencies": {
     "express": "^4.17.1",
     "nodemon": "^2.0.14"
