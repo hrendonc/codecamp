@@ -18,13 +18,13 @@ app.get("/", (req, res)=>{
     res.send("Hello Express by ecThor")
 })
 */
-/*
-app.get("json", (req, res)=>{
+
+app.get("/json", (req, res)=>{
     res.json({
-        
+        "message": "Hello json"
     })
 })
-*/
+
 
 app.listen(puerto, function(){
     console.log('Escuchando en puerto 3000')
