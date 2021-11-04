@@ -21,26 +21,26 @@ app.get("/", (req, res)=>{
     res.sendFile(absolutePath)
 })
 
-const messUper = "Hello json".toUpperCase()
+const mySecret = process.env.MESSAGE_STYLE
+var wordChange = "Hello json"
 
-app.get("/json", (req, res)=>{
-    if(process.env.MESSAGE_STYLE === "uppercase")
-    {
+app.get("/json", (req, res) => {
+    if (mySecret === "uppercase") {
         res.json({
-            "message": messUper
+            "message": wordChange.toUpperCase()
+        })
+    } else {
+        res.json({
+            "message": wordChange
         })
     }
-    else {
-        res.json({
-            "message": "Hello json"
-        })
-    }
-    
 })
 
 
 app.listen(puerto, function(){
-    console.log('Escuchando en puerto 3000')
+    console.log(`Escuchando en el puerto ${puerto}`)
 })
+
+
 
 module.exports = app
