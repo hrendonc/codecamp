@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 
 // Configuraciones
-puerto = '3000'
+const puerto = process.env.PORT || 3000;
 absolutePath = __dirname + "/views/index.html"
 
 // Middleware
