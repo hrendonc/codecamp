@@ -8,17 +8,14 @@ const puerto = process.env.PORT || 3000;
 absolutePath = __dirname + "/views/index.html"
 
 //// Middleware
-//app.use("/public", express.static(__dirname + "/public"))
+app.use("/public", express.static(__dirname + "/public"))
 
-//Rutas
-
-app.use("/", (req, res, next)=>{
-    res.send("Hello Express by ecThor")
+app.use((req, res, next)=>{
     console.log(req.method + " " + req.path + " - " + req.ip)
     next()
 })
 
-/*
+//Rutas
 app.get("/", (req, res)=>{
     res.sendFile(absolutePath)
 })
@@ -37,7 +34,6 @@ app.get("/json", (req, res) => {
         })
     }
 })
-*/
 
 app.listen(puerto, function(){
     console.log(`Escuchando en el puerto ${puerto}`)
