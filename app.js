@@ -11,37 +11,33 @@ absolutePath = __dirname + "/views/index.html"
 app.use("/public", express.static(__dirname + "/public"))
 
 //Rutas
-/*
-app.get("/", (req, res)=>{
-    res.send("Hello Express by ecThor")
-})
-*/
 
 app.get("/", (req, res, next)=>{
-    res.sendFile(absolutePath)
+    res.send("Hello Express by ecThor")
     console.log(req.method + " " + req.path + " - " + req.ip)
     next()
+})
+
+/*
+app.get("/", (req, res)=>{
+    res.sendFile(absolutePath)
 })
 
 const mySecret = process.env.MESSAGE_STYLE
 var wordChange = "Hello json"
 
-app.get("/json", (req, res, next) => {
+app.get("/json", (req, res) => {
     if (mySecret === "uppercase") {
         res.json({
             "message": wordChange.toUpperCase()
         })
-        console.log(req.method + " " + req.path + " - " + req.ip)
-        next()  
     } else {
         res.json({
             "message": wordChange
         })
-        console.log(req.method + " " + req.path + " - " + req.ip)
-        next()
     }
 })
-
+*/
 
 app.listen(puerto, function(){
     console.log(`Escuchando en el puerto ${puerto}`)
