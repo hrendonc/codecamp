@@ -17,22 +17,28 @@ app.get("/", (req, res)=>{
 })
 */
 
-app.get("/", (req, res)=>{
+app.get("/", (req, res, next)=>{
     res.sendFile(absolutePath)
+    console.log(req.method + " " + req.path + " - " + req.ip)
+    next()
 })
 
 const mySecret = process.env.MESSAGE_STYLE
 var wordChange = "Hello json"
 
-app.get("/json", (req, res) => {
+app.get("/json", (req, res, next) => {
     if (mySecret === "uppercase") {
         res.json({
             "message": wordChange.toUpperCase()
         })
+        console.log(req.method + " " + req.path + " - " + req.ip)
+        next()  
     } else {
         res.json({
             "message": wordChange
         })
+        console.log(req.method + " " + req.path + " - " + req.ip)
+        next()
     }
 })
 
