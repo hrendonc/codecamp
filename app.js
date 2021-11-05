@@ -12,7 +12,7 @@ app.use("/public", express.static(__dirname + "/public"))
 
 //Rutas
 
-app.get("/", (req, res, next)=>{
+app.use((req, res, next)=>{
     res.send("Hello Express by ecThor")
     console.log(req.method + " " + req.path + " - " + req.ip)
     next()
