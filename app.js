@@ -11,7 +11,7 @@ absolutePath = __dirname + "/views/index.html"
 app.use("/public", express.static(__dirname + "/public"))
 
 app.use((req, res, next)=>{
-    console.log(req.method + " - " + req.path + " - " + req.ip + " - " + Date())
+    //console.log(req.method + " - " + req.path + " - " + req.ip + " - " + Date())
     next()
 })
 
@@ -68,6 +68,17 @@ app.get("/user/:userId/book/:bookId", (req, res) => {
       book: req.params.bookId
     });
   });
+
+//Get Query Parameter Input from the Client
+app.get('/name', (req, res)=>{
+    let firstName = req.query.first
+    let lastName = req.query.last
+    //var {first: firstName, last: lastName} = req.query
+    console.log(firstName + " " + lastName)
+    res.json({
+        name: `${firstName} ${lastName}` 
+    })
+})
 
 //Escuchando el Puerto
 app.listen(puerto, ()=>{
