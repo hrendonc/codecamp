@@ -10,10 +10,10 @@ absolutePath = __dirname + "/views/index.html"
 //// Middleware
 app.use("/public", express.static(__dirname + "/public"))
 
-/*app.use((req, res, next)=>{
-    console.log(req.method + " " + req.path + " - " + req.ip + " - " + Date())
+app.use((req, res, next)=>{
+    console.log(req.method + " - " + req.path + " - " + req.ip + " - " + Date())
     next()
-})*/
+})
 
 //Rutas
 app.get("/", (req, res)=>{
@@ -31,6 +31,18 @@ app.get("/now", middleware, (req, res)=>{
         time: req.time
     })
 })
+
+app.get('/user/:id', (req, res, next)=>{
+    console.log('ID:', req.params.id)
+    next()
+}, (req, res)=>{
+    res.send('User info')
+})
+
+app.get('/user/:id', (req, res, next)=>{
+    res.send(req.params.id)
+})
+
 //End Chain Middleware
 
 const mySecret = process.env.MESSAGE_STYLE
@@ -47,6 +59,15 @@ app.get("/json", (req, res) => {
         })
     }
 })
+
+//Get Route Parameter Input from the Client
+app.get("/user/:userId/book/:bookId", (req, res) => {
+    //const {userId, bookId} = req.params;
+    res.json({
+      user: req.params.userId,
+      book: req.params.bookId
+    });
+  });
 
 //Escuchando el Puerto
 app.listen(puerto, ()=>{
